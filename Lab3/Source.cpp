@@ -12,13 +12,13 @@ void swap(int& a, int& b)
 	b = tmp;
 }
 
-void bubbleSort(int* mas, int number)
+void bubbleSort(int* mas, int len)
 {
-	int iter = number * 3;
+	int iter = len * 3;
 	for (int i = 0; i < iter; i++)
 	{
 		bool flag = true;
-		for (int j = 0; j < number; j++)
+		for (int j = 0; j < len; j++)
 		{
 			if (mas[j] == WHITE && mas[j + 1] == RED)
 			{
@@ -60,28 +60,48 @@ void bubbleSort(int* mas, int number)
 	}
 }*/
 
-void printMas(int* mas, int number)
+void selectionSort(int* mas, int len)
 {
-	for (int i = 0; i < number; i++)
+	int iter = len * 3;
+	int j = -1;
+	for (int i = 0; i < iter; i++)
+	{
+		j++;
+		for (int k = j + 1; k < len; k++)
+		{
+			if (mas[j] > mas[k])
+			{
+				swap(mas[j], mas[k]);
+				break;
+			}
+		}
+		if (j == len)
+			j = 0;
+	}
+}
+
+void printMas(int* mas, int len)
+{
+	for (int i = 0; i < len; i++)
 		printf("%d", mas[i]);
 	printf("\n");
 }
 
 int main()
 {
-	const int number = 9;
-	int mas[number] = { 0,1,2,0,1,2,0,1,2 };
-	//int mas[number] = { 2,2,2,1,1,1,0,0,0};
+	const int len = 9;
+	int mas[len] = { 0,1,2,0,1,2,0,1,2 };
+	//int mas[len] = { 2,2,2,1,1,1,0,0,0};
 
-	bubbleSort(mas, number);	
+	//bubbleSort(mas, len);	
 	/*Сложность в лучшем случае		O(n)
 	  Сложность в среднем случае	O(n^2)
 	  Сложность в худшем случае		O(n^2)*/
 
-	//selectionSort(mas, number);
+	selectionSort(mas, len);
 	// Сложность в любом случае O(n^2)
 
-	printMas(mas, number);
+	printMas(mas, len);
 		
 	return 0;
 }
