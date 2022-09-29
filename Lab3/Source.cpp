@@ -84,7 +84,6 @@ int main()
 {
 	const int len = 9;
 	int mas[len] = { 0,1,2,0,1,2,0,1,2 };
-	//int mas[len] = { 2,2,2,1,1,1,0,0,0};
 
 	switch (selectSort())
 	{
